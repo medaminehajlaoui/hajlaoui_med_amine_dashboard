@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -112,3 +113,119 @@
     <script src="script.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Web</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav {
+            width: 220px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        nav ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        nav li {
+            margin: 15px 0;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        /*  outil pour assurer que le dashboard est responsif : 
+        si larg< 768px: largeur moy pour une tablette =>applique styles suivants */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>Menu</h2>
+        <ul>
+            <li>Dashboard</li>
+            <li>Visites</li>
+            <li>Statistiques</li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Analyse des visiteurs</h1>
+
+        <div class="chart-container">
+            <canvas id="pagesChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="tempsChart"></canvas>
+        </div>
+
+        <h2>Liste des visites</h2>
+        <table id="visitesTable">
+            <thead>
+                <tr>
+                    <th>Utilisateur</th>
+                    <th>Page</th>
+                    <th>Temps sur la page (s)</th>
+                    <th>Interactions</th>
+                    <th>Taux de rebond (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+>>>>>>> ac80501405f84fac7f65418604509718ff8cfa3a
