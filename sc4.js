@@ -49,7 +49,9 @@ function appliquerFiltres() {
 
 function mettreAJourDashboard() {
     remplirTableau();
+    calculerKPIs();
     creerGraphiques();
+    creerGraphiqueRebond();
 }
 
 function remplirTableau() {
@@ -67,6 +69,22 @@ function remplirTableau() {
         `;
         tbody.appendChild(tr);
     });
+}
+
+function calculerKPIs() {
+    const totalVisites = visitesFiltrees.length;
+    const tempsMoyen = totalVisites > 0 
+        ? (visitesFiltrees.reduce((sum, v) => sum + v.temps, 0) / totalVisites).toFixed(1)
+        : 0;
+    const rebondMoyen = totalVisites > 0
+        ? (visitesFiltrees.reduce((sum, v) => sum + v.rebond, 0) / totalVisites).toFixed(1)
+        : 0;
+    const utilisateursUniques = new Set(visitesFiltrees.map(v => v.user)).size;
+
+    document.getElementById('totalVisites').textContent = totalVisites;
+    document.getElementById('tempsMoyen').textContent = `${tempsMoyen}s`;
+    document.getElementById('rebondMoyen').textContent = `${rebondMoyen}%`;
+    document.getElementById('utilisateursUniques').textContent = utilisateursUniques;
 }
 
 function creerGraphiques() {
@@ -115,6 +133,45 @@ function creerGraphiques() {
             }]
         },
         options: { responsive: true }
+    });
+}
+
+function creerGraphiqueRebond() {
+    const rebondData = {};
+    visitesFiltrees.forEach(v => {
+        rebondData[v.page] = (rebondData[v.page] || 0) + v.rebond;
+    });
+
+    const countData = {};
+    visitesFiltrees.forEach(v => {
+        countData[v.page] = (countData[v.page] || 0) + 1;
+    });
+
+    const rebondMoyenParPage = Object.keys(rebondData).map(page => 
+        (rebondData[page] / countData[page]).toFixed(1)
+    );
+
+    new Chart(document.getElementById("rebondChart"), {
+        type: "doughnut",
+        data: {
+            labels: Object.keys(rebondData),
+            datasets: [{
+                label: "Taux de rebond moyen (%)",
+                data: rebondMoyenParPage,
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
+                    '#9966FF', '#FF9F40', '#FF6384', '#C9CBCF'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
     });
 }
 
