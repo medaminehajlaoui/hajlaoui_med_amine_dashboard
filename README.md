@@ -46,4 +46,53 @@ Ajout d'indicateurs KPI
 Graphiques supplémentaires
 
 Animations et interactions avancées
+🔄 Évolution du Projet
+
+
+Commit 2 : Graphiques avancés et indicateurs KPI
+Nouvelles fonctionnalités :
+
+ Indicateurs KPI (visites, temps moyen, rebond, utilisateurs)
+
+ Graphique doughnut pour les taux de rebond
+
+ Cartes animées avec effets hover
+
+Calculs automatiques des métriques
+
+Difficultés rencontrées :
+
+Synchronisation des indicateurs avec les filtres
+
+Calcul des pourcentages et moyennes
+
+Design responsive pour la grille KPI
+
+Solutions apportées :
+
+Fonction unique de mise à jour du dashboard
+
+Calculs en temps réel basés sur données filtrées
+
+CSS Grid pour layout responsive
+
+
+dernoier commit nouvelles choses apportées
+
+📊 Graphique circulaire (Pie Chart) : Répartition en pourcentage des utilisateurs
+
+🎨 Grille de graphiques : Layout responsive avec 4 graphiques organisés
+
+👥 Données enrichies : Plus d'utilisateurs pour mieux voir la répartition
+
+📱 Design amélioré : Chaque graphique dans sa propre carte avec titre
+
+🔄 Animations : Rotation et scale pour le graphique circulaire
+
+🔧 Tooltips enrichis : Pourcentages et nombres absolus dans les infobulles
+
+Le graphique circulaire montre clairement la répartition des visites entre les différents utilisateurs, avec des pourcentages précis et un effet visuel très professionnel !
+
+
+
 
